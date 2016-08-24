@@ -23,7 +23,7 @@ namespace AlarmClock.CodedUITests.PageObjects
 
         public void startApp()
         {
-            ApplicationUnderTest.Launch(@"C:\AlarmClock\bin\Release");
+            ApplicationUnderTest.Launch(@"C:\AlarmClock\AlarmClock\bin\Release\AlarmClock.exe");
             
        }
 
