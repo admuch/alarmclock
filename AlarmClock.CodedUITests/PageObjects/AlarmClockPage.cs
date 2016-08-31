@@ -1,12 +1,9 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using Microsoft.VisualStudio.TestTools.UITesting;
 using Microsoft.VisualStudio.TestTools.UITesting.WinControls;
 using Microsoft.VisualStudio.TestTools.UITesting.WpfControls;
 using System.IO;
+using System.Configuration;
 
 namespace AlarmClock.CodedUITests.PageObjects
 {
@@ -14,6 +11,7 @@ namespace AlarmClock.CodedUITests.PageObjects
     {
         public static readonly WpfWindow window = new WpfWindow();
         public static string winTitle = "Alarm Clock App";
+        private static string currPath = ConfigurationManager.AppSettings["currentPath"];
 
         public AlarmClockPage()
         {
@@ -23,7 +21,8 @@ namespace AlarmClock.CodedUITests.PageObjects
 
         public void startApp()
         {
-            ApplicationUnderTest.Launch(@"C:\AlarmClock\AlarmClock\bin\Release\AlarmClock.exe");
+            Directory.SetCurrentDirectory(currPath);
+            ApplicationUnderTest.Launch(Directory.GetCurrentDirectory() + @"\AlarmClock\bin\Release\AlarmClock.exe");
             
        }
 
